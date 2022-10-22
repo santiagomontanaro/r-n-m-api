@@ -1,0 +1,24 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 64px);
+}
+
+
+a img {
+    border-radius: 8px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 2em 3em;
+    border-radius: 10px;
+    background-color: #252525;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from 'react-router-dom'
+import Info from "./components/Info";
+import Navbar from "./components/Navbar";
+import Pagination from "./components/Pagination";
+import './App.css'
 
 function App() {
+  const apiUrl = 'https://rickandmortyapi.com/api/character'
+
+  const [characters, setCharacters] = useState([]);
+  const [info, setInfo] = useState({});
+
+  let infoUrl = async (url) => {
+    const response = await fetch(url)
+    const data = await response.json()
+    setInfo(data.info)
+    setCharacters(data.results)
+  }
+
+  const onNext = () => {
+    fetch(info.next)
+      .then(res => res.json())
+      .then(res => {
+        setCharacters(res.results)
+        setInfo(res.info)
+      })
+  }
+
+  const onPrev = () => {
+    fetch(info.prev)
+      .then(res => res.json())
+      .then(res => {
+        setCharacters(res.results)
+        setInfo(res.info)
+      })
+  }
+
+  useEffect(() => {
+    infoUrl(apiUrl)
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <Routes>
+        <Route path="/" element={<>
+          <Navbar data={characters} />
+          <Pagination prev={info.prev} next={info.next} onNext={onNext} onPrev={onPrev} />
+        </>} />
+        <Route path="/characters" element={<>
+          <Pagination prev={info.prev} next={info.next} onNext={onNext} onPrev={onPrev} />
+        </>} />
+        <Route path="/characters/:name/:id" element={<Info characters={characters} />} />
+      </Routes>
     </div>
   );
 }

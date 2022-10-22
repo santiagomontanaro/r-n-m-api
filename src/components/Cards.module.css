@@ -1,0 +1,10 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1550px;
+    margin: 2em;
+    gap: 2em;
+}

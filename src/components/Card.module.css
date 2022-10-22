@@ -1,0 +1,43 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525;
+    padding: 1em;
+    border-radius: 10px;
+    gap: 12px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.img {
+    position: relative;
+}
+
+.status {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    border-radius: 5px;
+    padding: .1em .3em;
+    text-transform: capitalize;
+}
+
+.card {
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    color: #FFFFFF !important;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+}

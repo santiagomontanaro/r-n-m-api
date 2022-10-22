@@ -1,0 +1,26 @@
+.right-arrow, .left-arrow {
+    background-color: #252525;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.right-arrow:hover, .left-arrow:hover {
+    background-color: #353535;
+}
+
+.right-arrow {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    cursor: pointer;
+}
+.left-arrow {
+    position: fixed;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    cursor: pointer;
+}
